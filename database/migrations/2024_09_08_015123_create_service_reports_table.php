@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('service_reports', function (Blueprint $table) {
             $table->id();
+            $table->dateTime('Service_date');
+            $table->string('service_comments');
+
+            $table->unsignedBigInteger('id_service_appointment'); 
+            $table->foreign('id_service_appointment')->references('id')->on('id_service_appointments');
+            
             $table->timestamps();
         });
     }
