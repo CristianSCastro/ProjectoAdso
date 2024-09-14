@@ -12,7 +12,6 @@ class VaccinationController extends Controller
             'message' => 'Retrieved Successfully'
         ]);
     }
-
           
     public function save(request $request)
         {
