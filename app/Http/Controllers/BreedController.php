@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Models\Breed;
 
 class BreedController extends Controller
 {
@@ -16,6 +17,14 @@ class BreedController extends Controller
           
     public function save(request $request)
         {
+           // $Breed = Breed::create([
+               // "breedsName"=>$request->breedsName,
+           // ]);
+
+            $Breed=new Breed();
+            $Breed->breedsName= $request->breedsname;
+            $Breed->save();
+
              return response() ->json([
             'status'=> '200',
             'message' => 'Saved Successfully' 
