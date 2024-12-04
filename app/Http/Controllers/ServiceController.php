@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\models\Service;
 
 class ServiceController extends Controller
 {
@@ -18,9 +19,14 @@ class ServiceController extends Controller
           
     public function save(request $request)
         {
+            $service = Service::create ([
+                'Service'=>$request->Service,
+                'price'=>$request->price,
+            ]);
              return response() ->json([
             'status'=> '200',
-            'message' => 'Saved Successfully' 
+            'message' => 'Saved Successfully',
+            'data'=> $service,
             ]);
         }
 

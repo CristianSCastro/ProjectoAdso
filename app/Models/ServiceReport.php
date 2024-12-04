@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Service_report extends Model
+class ServiceReport extends Model
 {
     use HasFactory;
+    protected $fillable = ['Service_date', 'service_comments', 'id_service_appointment'];
+
 }

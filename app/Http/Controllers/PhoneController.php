@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\models\Phone;
 
 class PhoneController extends Controller
 {
@@ -18,9 +19,14 @@ class PhoneController extends Controller
           
     public function save(request $request)
         {
+            $phone = Phone::create ([
+                'id_owner'=>$request->id_owner,
+                'phone'=>$request->phone,
+            ]);
              return response() ->json([
             'status'=> '200',
-            'message' => 'Saved Successfully' 
+            'message' => 'Saved Successfully',
+            'data'=> $phone,
             ]);
         }
 

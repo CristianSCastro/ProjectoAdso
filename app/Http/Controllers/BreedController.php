@@ -15,23 +15,26 @@ class BreedController extends Controller
     }
 
           
-    public function save(request $request)
-        {
-           // $Breed = Breed::create([
-               // "breedsName"=>$request->breedsName,
-           // ]);
+    public function save(request $request){
 
-            $Breed=new Breed();
-            $Breed->breedsName= $request->breedsname;
-            $Breed->save();
+            //$Breed=Breed::create([
+              // 'breedsName'=>$request->breedsName,
+            //]);
+
+            $Breed= new Breed();
+           $Breed->breedsName= $request->breedsName;
+           $Breed->save();
 
              return response() ->json([
             'status'=> '200',
-            'message' => 'Saved Successfully' 
+            'message' => 'Saved Successfully',
+            'data' => $Breed, 
+
             ]);
         }
 
     public function update(request $request){
+
 
         return response() ->json([
             'status'=> '200',

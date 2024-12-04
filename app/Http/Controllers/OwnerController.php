@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\models\Owner;
 
 class OwnerController extends Controller
 {
@@ -16,9 +17,19 @@ class OwnerController extends Controller
           
     public function save(request $request)
         {
+            $request->validate([
+                'ownersName' => 'required|string|max:255',
+                'address' => 'required|string|max:255',
+            ]);
+
+            $owner = Owner::create ([
+                'ownersName'=>$request->ownersName,
+                'address'=>$request->address,
+            ]);
              return response() ->json([
             'status'=> '200',
-            'message' => 'Saved Successfully' 
+            'message' => 'Saved Successfully',
+            'data' =>$owner, 
             ]);
         }
 

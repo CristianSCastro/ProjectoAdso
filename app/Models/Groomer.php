@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Groomer extends Model
 {
     use HasFactory;
+    protected $fillable=['groomersName'];
 }

@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('ages', function (Blueprint $table) {
             $table->id();
-            $table->integer('age');
-            $table->date('DOB');
+            $table->integer('age');           
             $table->timestamps();
         });
     }

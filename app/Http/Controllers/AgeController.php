@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\models\Age;
 
 class AgeController extends Controller
 {
@@ -18,9 +19,18 @@ class AgeController extends Controller
           
     public function save(request $request)
         {
+
+            $age=Age::create ([
+                'age'=>$request->age,                
+
+
+            ]);
+
+
              return response() ->json([
             'status'=> '200',
-            'message' => 'Saved Successfully' 
+            'message' => 'Saved Successfully', 
+            'data' =>$age,
             ]);
         }
 
