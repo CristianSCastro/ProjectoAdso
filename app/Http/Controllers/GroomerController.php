@@ -36,15 +36,32 @@ class GroomerController extends Controller
 
     public function update(request $request){
 
-        return response() ->json([
-            'status'=> '200',
-            'message' => 'Updated Successfully' 
+        $request->validate([
+            'id' => 'required|exists:groomers,id', // Ensure the groomer exists in the database
+            'groomersName' => 'required|string|max:255', // Ensure the groomers name is not empty or null
+        ]);
+    
+        // Find the groomer by ID, or fail if not found
+        $groomer = Groomer::findOrFail($request->id);
+    
+        // Update the groomer's name
+        $groomer->update([
+            'groomersName' => $request->groomersName,
+        ]);
+    
+        // Return a response indicating success
+        return response()->json([
+            'status' => 200,
+            'message' => 'Groomer updated successfully',
+            'data' => $groomer,
         ]);
     }
 
     
     public function delete(request $request)
     {
+        $groomer = Groomer::findOrFail($request->id);
+        $groomer->delete();
 
         return response() ->json([
             'status'=> '200',

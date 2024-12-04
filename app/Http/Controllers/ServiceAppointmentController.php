@@ -47,6 +47,15 @@ class ServiceAppointmentController extends Controller
 
     public function update(request $request){
 
+        $appointment = ServiceAppointment::findOrFail($request->id);
+
+        $appointment->update([
+            'apptDate' => $request->apptDate,
+                'id_pet' => $request->id_pet,
+                'id_groomer' => $request->id_groomer,
+                'id_service' => $request->id_service,
+            ]);
+
         return response() ->json([
             'status'=> '200',
             'message' => 'Updated Successfully' 
@@ -56,6 +65,14 @@ class ServiceAppointmentController extends Controller
     
     public function delete(request $request)
     {
+        $appointment = ServiceAppointment::findOrFail($request->id);
+
+        $appointment->delete([
+            'apptDate' => $request->apptDate,
+                'id_pet' => $request->id_pet,
+                'id_groomer' => $request->id_groomer,
+                'id_service' => $request->id_service,
+            ]);
 
         return response() ->json([
             'status'=> '200',

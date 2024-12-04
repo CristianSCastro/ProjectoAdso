@@ -38,6 +38,18 @@ class OwnerController extends Controller
 
     public function update(request $request){
 
+        $owner= Owner::findOrFail($request->id);
+
+        $owner->update([
+            'ownersName'=>$request->ownersName,
+            'address'=>$request->address,
+        ]);
+
+        return response() ->json([
+            'status'=> '200',
+            'message' => 'Updated Successfully' 
+        ]);
+
         return response() ->json([
             'status'=> '200',
             'message' => 'Updated Successfully' 
@@ -47,6 +59,12 @@ class OwnerController extends Controller
     
     public function delete(request $request)
     {
+        $owner= Owner::findOrFail($request->id);
+
+        $owner->delete([
+            'ownersName'=>$request->ownersName,
+            'address'=>$request->address,
+        ]);
 
         return response() ->json([
             'status'=> '200',

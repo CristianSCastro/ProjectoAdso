@@ -35,6 +35,12 @@ class ServiceController extends Controller
 
     public function update(request $request){
 
+        $service = Service::findOrFail($request->id);
+        $service->update([
+            'Service'=>$request->Service,
+            'price'=>$request->price,
+        ]);
+
         return response() ->json([
             'status'=> '200',
             'message' => 'Updated Successfully' 
@@ -44,6 +50,8 @@ class ServiceController extends Controller
     
     public function delete(request $request)
     {
+        $service = Service::findOrFail($request->id);
+        $service->delete();
 
         return response() ->json([
             'status'=> '200',

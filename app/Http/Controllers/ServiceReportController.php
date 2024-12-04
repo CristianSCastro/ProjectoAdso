@@ -44,6 +44,13 @@ class ServiceReportController extends Controller
         }
 
     public function update(request $request){
+        $serviceReport = ServiceReport::findOrFail($request->id);
+
+        $serviceReport->update([
+            'Service_date' => $request->Service_date,
+                'service_comments' => $request->service_comments,
+                'id_service_appointment' => $request->id_service_appointment,
+            ]);
 
         return response() ->json([
             'status'=> '200',
@@ -54,6 +61,8 @@ class ServiceReportController extends Controller
     
     public function delete(request $request)
     {
+        $serviceReport = ServiceReport::findOrFail($request->id);
+        $serviceReport->delete();
 
         return response() ->json([
             'status'=> '200',

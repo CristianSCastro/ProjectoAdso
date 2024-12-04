@@ -18,7 +18,6 @@ class AgeController extends Controller
             'result'=> $age
         ]);
     }
-
           
     public function save(request $request)
         {
@@ -39,6 +38,12 @@ class AgeController extends Controller
 
     public function update(request $request){
 
+        $age= Age::findOrFail($request->id);
+
+        $age->update([
+            'age'=>$request->age,
+        ]);
+
         return response() ->json([
             'status'=> '200',
             'message' => 'Updated Successfully' 
@@ -48,6 +53,8 @@ class AgeController extends Controller
     
     public function delete(request $request)
     {
+        $age= Age::findOrFail($request->id);
+        $age->delete();
 
         return response() ->json([
             'status'=> '200',

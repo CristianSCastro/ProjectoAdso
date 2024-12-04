@@ -51,6 +51,17 @@ class PetController extends Controller
 
     public function update(request $request){
 
+        $pet= Pet::findOrFail($request->id);
+
+        $pet->update([
+            'petsName' => $request->petsName,
+                'id_breeds' => $request->id_breeds,
+                'id_color' => $request->id_color,
+                'id_age' => $request->id_age,
+                'id_vaccination' => $request->id_vaccination,
+                'id_owner' => $request->id_owner,
+        ]);
+
         return response() ->json([
             'status'=> '200',
             'message' => 'Updated Successfully' 
@@ -60,6 +71,17 @@ class PetController extends Controller
     
     public function delete(request $request)
     {
+        $pet= Pet::findOrFail($request->id);
+
+        $pet->delete([
+            'petsName' => $request->petsName,
+                'id_breeds' => $request->id_breeds,
+                'id_color' => $request->id_color,
+                'id_age' => $request->id_age,
+                'id_vaccination' => $request->id_vaccination,
+                'id_owner' => $request->id_owner,
+        ]);
+        
 
         return response() ->json([
             'status'=> '200',

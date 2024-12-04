@@ -35,6 +35,12 @@ class ColorController extends Controller
 
     public function update(request $request){
 
+        $color= Color::findOrFail($request->id);
+
+        $color->update([
+            'color'=>$request->color,
+        ]);
+
         return response() ->json([
             'status'=> '200',
             'message' => 'Updated Successfully' 
@@ -44,6 +50,8 @@ class ColorController extends Controller
     
     public function delete(request $request)
     {
+        $color= Color::findOrFail($request->id);
+        $color->delete();
 
         return response() ->json([
             'status'=> '200',

@@ -35,6 +35,13 @@ class PhoneController extends Controller
 
     public function update(request $request){
 
+        $phone= Phone::findOrFail($request->id);
+
+        $phone->update([
+            'id_owner'=>$request->id_owner,
+            'phone'=>$request->phone,
+        ]);
+
         return response() ->json([
             'status'=> '200',
             'message' => 'Updated Successfully' 
@@ -44,6 +51,12 @@ class PhoneController extends Controller
     
     public function delete(request $request)
     {
+        $phone= Phone::findOrFail($request->id);
+
+        $phone->delete([
+            'id_owner'=>$request->id_owner,
+            'phone'=>$request->phone,
+        ]);
 
         return response() ->json([
             'status'=> '200',

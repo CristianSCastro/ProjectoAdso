@@ -9,5 +9,5 @@ class Breed extends Model
 {
     use HasFactory;
 
-    protected $fillable=['BreedsName'];
+    protected $fillable = ['breedsName'];
 }

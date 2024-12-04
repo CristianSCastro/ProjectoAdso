@@ -38,6 +38,14 @@ class VaccinationController extends Controller
 
     public function update(request $request){
 
+       
+            $vaccination=Vaccination::findOrFail($request->id);
+    
+            $vaccination->update([
+                'Vaccination_name'=>$request->Vaccination_name,
+                'Vaccination_date'=>$request->Vaccination_date,
+                ]);
+
         return response() ->json([
             'status'=> '200',
             'message' => 'Updated Successfully' 
@@ -47,6 +55,8 @@ class VaccinationController extends Controller
     
     public function delete(request $request)
     {
+        $vaccination=Vaccination::findOrFail($request->id);    
+            $vaccination->delete();
 
         return response() ->json([
             'status'=> '200',

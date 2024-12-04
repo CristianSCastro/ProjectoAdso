@@ -20,9 +20,9 @@ class BreedController extends Controller
           
     public function save(request $request){
 
-            //$Breed=Breed::create([
-              // 'breedsName'=>$request->breedsName,
-            //]);
+           // $Breed=Breed::create([
+            //'breedsName'=>$request->breedsName,
+           // ]);
 
             $Breed= new Breed();
            $Breed->breedsName= $request->breedsName;
@@ -38,6 +38,16 @@ class BreedController extends Controller
 
     public function update(request $request){
 
+        $request->validate([
+            'id' => 'required|exists:breeds,id',
+            'breedsName' => 'required|string|max:255',
+        ]);
+        
+        $breed= Breed::findOrFail($request->id);
+
+        $breed->update([
+            'breedsName'=>$request->breedsName,
+        ]);
 
         return response() ->json([
             'status'=> '200',
@@ -48,6 +58,8 @@ class BreedController extends Controller
     
     public function delete(request $request)
     {
+        $breed= Breed::findOrFail($request->id);
+        $breed->delete();
 
         return response() ->json([
             'status'=> '200',
