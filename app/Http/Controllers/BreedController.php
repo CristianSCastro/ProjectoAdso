@@ -8,9 +8,12 @@ class BreedController extends Controller
 {
     public function getData(Request $request)
     { 
+        $breed= Breed :: all();
+
         return response()->json([
             'status' => '200',
-            'message' => 'Retrieved Successfully'
+            'message' => 'Retrieved Successfully',
+            'result'=> $breed
         ]);
     }
 

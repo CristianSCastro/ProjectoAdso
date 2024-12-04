@@ -8,9 +8,12 @@ class VaccinationController extends Controller
 {
     public function getData(Request $request)
     { 
+        $vaccination= Vaccination :: all();
+
         return response()->json([
             'status' => '200',
-            'message' => 'Retrieved Successfully'
+            'message' => 'Retrieved Successfully',
+            'result'=> $vaccination
         ]);
     }
           

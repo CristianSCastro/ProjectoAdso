@@ -10,9 +10,12 @@ class ServiceAppointmentController extends Controller
 {
     public function getData(Request $request)
     { 
+        $appointment= ServiceAppointment :: all();
+
         return response()->json([
             'status' => '200',
-            'message' => 'Retrieved Successfully'
+            'message' => 'Retrieved Successfully',
+            'result'=> $appointment
         ]);
     }
 

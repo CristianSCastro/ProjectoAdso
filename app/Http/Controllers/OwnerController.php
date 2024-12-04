@@ -8,9 +8,12 @@ class OwnerController extends Controller
 {
     public function getData(Request $request)
     { 
+        $owner= Owner :: all();
+
         return response()->json([
             'status' => '200',
-            'message' => 'Retrieved Successfully'
+            'message' => 'Retrieved Successfully',
+            'result'=> $owner
         ]);
     }
 

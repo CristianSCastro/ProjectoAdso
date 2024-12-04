@@ -10,12 +10,12 @@ class GroomerController extends Controller
 {
     public function getData(Request $request)
     { 
+        $groomer= Groomer :: all();
 
-       
         return response()->json([
             'status' => '200',
             'message' => 'Retrieved Successfully',
-            
+            'result'=> $groomer
         ]);
     }
 

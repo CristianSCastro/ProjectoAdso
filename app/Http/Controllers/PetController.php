@@ -10,9 +10,12 @@ class PetController extends Controller
 {
     public function getData(Request $request)
     { 
+        $pet= Pet :: all();
+
         return response()->json([
             'status' => '200',
-            'message' => 'Retrieved Successfully'
+            'message' => 'Retrieved Successfully',
+            'result'=> $pet
         ]);
     }
 

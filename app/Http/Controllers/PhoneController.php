@@ -10,9 +10,12 @@ class PhoneController extends Controller
 {
     public function getData(Request $request)
     { 
+        $phone= Phone :: all();
+
         return response()->json([
             'status' => '200',
-            'message' => 'Retrieved Successfully'
+            'message' => 'Retrieved Successfully',
+            'result'=> $phone
         ]);
     }
 

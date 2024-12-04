@@ -9,9 +9,12 @@ class ColorController extends Controller
 {
     public function getData(Request $request)
     { 
+        $color= Color :: all();
+
         return response()->json([
             'status' => '200',
-            'message' => 'Retrieved Successfully'
+            'message' => 'Retrieved Successfully',
+            'result'=> $color
         ]);
     }
 

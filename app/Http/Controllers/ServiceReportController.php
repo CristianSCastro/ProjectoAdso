@@ -10,9 +10,12 @@ class ServiceReportController extends Controller
 {
     public function getData(Request $request)
     { 
+        $ServiceReport= ServiceReport :: all();
+
         return response()->json([
             'status' => '200',
-            'message' => 'Retrieved Successfully'
+            'message' => 'Retrieved Successfully',
+            'result'=> $ServiceReport
         ]);
     }
 
